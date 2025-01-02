@@ -1,0 +1,21 @@
+{% extends 'articles/base.html' %} {% block content %}
+<h2 class="m-2 border-bottom">投稿削除確認</h2>
+<p class="m-3">以下の投稿を削除します</p>
+<div class="mx-3 card">
+    <div class="card-body">
+        <h3 class="card-title">{{ article_delete.title }}</h3>
+        <p class="card-text">{{ article_delete.article_body }}</p>
+        <small class="card-text text-body-secondary text-muted">
+            最終更新日時：<time>{{ article_delete.updated_at }}</time>
+        </small><br>
+        <small class="card-text text-body-secondary text-muted">
+            作成日時：<time>{{ article_delete.created_at }}</time>
+        </small>
+    </div>
+</div>
+<form method="post" class="m-3">
+    {% csrf_token %}
+    <input class="btn btn-danger" type="submit" name="create" value="削除">
+    <a class="btn btn-warning" href="{% url 'articles:article_detail' article_delete.pk %}">戻る</a>
+</form>
+{% endblock %}

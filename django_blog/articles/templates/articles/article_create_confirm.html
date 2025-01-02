@@ -1,0 +1,17 @@
+{% extends 'articles/base.html' %} {% block content %}
+<h2 class="m-2 border-bottom">投稿内容確認</h2>
+<p class="m-3">以下の内容で投稿します</p>
+<div class="mx-3 card">
+    <div class="card-body">
+        <h3 class="card-title">{{ form.title.value }}</h3>
+        <p class="card-text">{{ form.article_body.value }}</p>
+        <small class="card-text text-body-secondary text-muted">文字数： {{ form.article_body.value | length }}</small>
+    </div>
+</div>
+<form method="post" action="{% url 'articles:article_create_confirm' %}" class="m-3">
+    {% csrf_token %}
+    {% for field in form %} {{ field.as_hidden }} {% endfor %}
+    <input class="btn btn-success" type="submit" name="create" value="投稿">
+    <input class="btn btn-warning" type="submit" name="back" value="戻る">
+</form>
+{% endblock %}

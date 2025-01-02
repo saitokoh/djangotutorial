@@ -1,0 +1,15 @@
+{% extends 'articles/base.html' %} {% block content %}
+<h2 class="m-2 border-bottom">投稿詳細</h2>
+<div class="card m-3">
+    <div class="card-body">
+        <h3 class="card-title">{{ article.title }}</h3>
+        <textarea class="card-text form-control-plaintext" readonly>{{ article.article_body }}</textarea>
+        <small class="card-text text-body-secondary text-muted">最終更新日時：<time>{{ article.updated_at }}</time></small><br>
+        <small class="card-text text-body-secondary text-muted">作成日時：<time>{{ article.created_at }}</time></small>
+        <div class="card-text">
+            <a href="{% url 'articles:article_edit' article.pk %}" class="btn btn-success">編集</a>
+            <a href="{% url 'articles:article_delete' article.pk%}" class="btn btn-danger">削除</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
