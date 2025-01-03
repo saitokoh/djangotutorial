@@ -1,3 +1,4 @@
+from django.views.generic.base import View
 from django.views.generic.list import ListView
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
